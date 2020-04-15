@@ -5,7 +5,7 @@ STDIN equ 0
 STDOUT equ 1
 
 section .data
-msgchoix dw 'Bonjour veulliez choisir le type de calcul en rentrant 1:addition 2:mul'
+msgchoix dw 'Bonjour veulliez choisir le type de calcul en rentrant 1:addition 2:mul',0xa
 lenmsgchoix equ $ - msgchoix
 msg1add dw 'Bonjour veuillez choisir un nombre a additionner',0xa
 lenmsg1add equ $ - msg1add
@@ -153,19 +153,3 @@ exit:
 	mov eax,SYS_EXIT
 	xor ebx,ebx
 	int 0x80
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
