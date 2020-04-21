@@ -29,6 +29,7 @@ section .bss
 choix resb 2
 num1 resb 2
 num2 resb 2
+mid1 resb 2
 sum resb 2
 
 section .text
@@ -71,14 +72,33 @@ sqrt :
 	mov ecx,num1
 	mov edx,1
 	int 0x80
+	
+	mov edx,[num1]
+	
+	jmp sqrtcalc
 
-	;calcul
+sqrtcalc :
 	
-	
-	
-	jmp resultat
+	mov eax,[sum]
+	sub eax,'0'
+	mov [mid1],[num1]
+	div [mid1]
+	add [mid1],'0'
 
-division:
+	add [mid1],[sum]
+
+	mov eax,2
+	sub eax,'0'
+	sub [mid1],'0'
+	div [mid1]
+	add [mid1],'0'
+
+	cmp [sum],[mid1]
+	mov [sum],[mid1]
+	je resultat
+	jne sqrtcalc
+
+division :
 	
 	mov eax,SYS_WRITE
 	mov ebx,STDOUT
