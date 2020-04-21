@@ -81,20 +81,20 @@ sqrtcalc :
 	
 	mov eax,[sum]
 	sub eax,'0'
-	mov [mid1],[num1]
-	div [mid1]
-	add [mid1],'0'
+	mov ecx,[num1]
+	div ecx
+	add ecx,'0'
 
-	add [mid1],[sum]
+	add ecx,[sum]
 
 	mov eax,2
 	sub eax,'0'
-	sub [mid1],'0'
-	div [mid1]
-	add [mid1],'0'
+	sub ecx,'0'
+	div ecx
+	add ecx,'0'
 
-	cmp [sum],[mid1]
-	mov [sum],[mid1]
+	cmp [sum],ecx
+	mov [sum],ecx
 	je resultat
 	jne sqrtcalc
 
